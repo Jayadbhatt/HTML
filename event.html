@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Bubbling Example</title>
+</head>
+<body>
+
+  <div id="outer" style="border: 1px solid red; padding: 20px;">
+    <div id="middle" style="border: 1px solid green; padding: 20px;">
+      <button id="inner" style="border: 1px solid blue; padding: 20px;">Click me!</button>
+    </div>
+  </div>
+
+  <script>
+    // Event listener on the outermost element
+    document.getElementById('outer').addEventListener('click', function(event) {
+      console.log('Outer div clicked!');
+      console.log('Target: ' + event.target.id);
+    });
+
+    // Event listener on the middle element
+    document.getElementById('middle').addEventListener('click', function(event) {
+      console.log('Middle div clicked!');
+      console.log('Target: ' + event.target.id);
+    });
+
+    // Event listener on the innermost button
+    document.getElementById('inner').addEventListener('click', function(event) {
+      console.log('Button clicked!');
+      console.log('Target: ' + event.target.id);
+      // Stop the event from further propagation
+      event.stopPropagation();
+    });
+  </script>
+
+</body>
+</html>
